@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+	</head>
+	<body>
+		<script type="text/javascript">
+			var name=prompt('Student\'s name:','');
+			var mark1=prompt('First mark:','');
+			var mark2=prompt('Second mark:','');
+			var mark3=prompt('Third mark:','');
+
+			var avr= (parseInt(mark1) + parseInt(mark2) + parseInt(mark3))/3;
+
+			if (avr >= 5){
+				document.write('Congratulations ' + name + '! You pass the exam.');
+			} else {
+				document.write('You fail.');
+			}
+		</script>
+	</body>
+</html>

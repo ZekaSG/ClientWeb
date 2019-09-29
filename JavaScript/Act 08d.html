@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+	</head>
+	<body>
+		<script type="text/javascript">
+			var salary=prompt('Enter worker\'s salary:','');
+			var years=prompt('Enter your second number:','');
+
+			if((salary < 500) && (years >= 10)){
+				var nextSalary = parseInt(salary) + parseInt(salary * 0.2);
+				document.write('Next\'s year salary: ' + nextSalary);
+			}
+
+			if((salary < 500) && (years < 10)){
+				var nextSalary = parseInt(salary) + parseInt(salary * 0.05);
+				document.write('Next\'s year salary: ' + nextSalary);
+			} else {
+				document.write('Next\'s year salary: ' + salary);
+			}
+		</script>
+	</body>
+</html>
