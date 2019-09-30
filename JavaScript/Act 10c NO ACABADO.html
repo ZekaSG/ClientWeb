@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+		</head>
+		<body>
+			<script type="text/javascript">
+				var cont = 0;
+				var i = 0;
+				while(cont != 25){
+					i++;
+					var str = i.toString();
+					var l = i.length;
+					var hasNoPattern = false;
+					var j = 0;
+					while((hasNoPattern == false)&&(j <= l - 1)&&(l > 1)){
+						if(str.charAt(j) == str.charAt(parseInt(j)+ 1)){
+							if(j == l - 1){
+								document.write(str);
+								cont++;
+							} else {
+								j++;
+							}
+						} else {
+							hasNoPattern = true;	
+						}	
+					}
+				}
+
+			</script>
+		</body>
+	</html>
