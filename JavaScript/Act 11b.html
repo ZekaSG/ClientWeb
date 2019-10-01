@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+	<html>
+		<head></head>
+		<body>
+			<script type="text/javascript">
+				var cont = 1;
+				var male = 0;
+				var female = 0;
+				var menBetween = 0;
+				var maxWomanAge = 0;
+				var olderWomanId = 0;
+				var minManAge = 0;
+				var youngestManId = 0;
+				do{
+					var id = prompt('Enter an ID number for person number ' + cont + ' : ','');
+					if(id == 0){
+						break;
+					}
+					var age = prompt('Enter an age for person number ' + cont + ' : ','');
+					var sex = prompt('Enter a sex(male/female) for person number ' + cont + ' : ','');
+					if(sex == 'male'){
+						male++;
+						if((age >= 18) && (age <= 65)){
+							menBetween++;
+						}
+						if(age >= minManAge){
+							minManAge = age;
+							youngestManId = id;
+						}
+					} 
+					if(sex == 'female'){
+						female++;
+						if(age >= maxWomanAge){
+							maxWomanAge = age;
+							olderWomanId = id;
+						}
+					}
+					cont++;
+				} while (id != 0);
+
+				document.write('There are ' + cont + ' people.' + '<br/>');
+				document.write('There are ' + male + ' men.' + '<br/>');
+				document.write('There are ' + female + ' female.' + '<br/>');
+				document.write('The id of the older woman is: ' + olderWomanId + '<br/>');
+				document.write('The id of the youngest man is: ' + youngestManId + '<br/>');
+
+				
+			</script>
+		</body>
+	</html>

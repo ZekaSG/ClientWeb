@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+	<html>
+		<head></head>
+		<body>
+			<script type="text/javascript">
+				var num;
+				var sum = 0;
+				do{
+					var num=prompt('Enter a number:','');
+					sum = parseInt(sum) + parseInt(num);
+				} while (num != 9999);
+
+				if(sum == 0){
+					document.write('ZERO');
+				} else {
+					if(sum > 0){
+						document.write('POSITIVE');
+					} else {
+						document.write('NEGATIVE');
+					}
+				}
+			</script>
+		</body>
+	</html>
