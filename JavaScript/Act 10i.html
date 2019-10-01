@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+		</head>
+		<body>
+			<script type="text/javascript">
+				var cont = 0;
+				var pair = 0;
+				var odd = 0;
+				while(cont < 5){
+					var n = prompt('Enter a number: ', '');
+					if((n % 2) == 0){
+						pair++;
+					} else {
+						odd++;
+					}
+					cont++;
+				}
+				document.write('Pair numbers: ' + pair + '<br/>' + 'Odd numbers: ' + odd);
+
+			</script>
+		</body>
+	</html>

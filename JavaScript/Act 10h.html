@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+		</head>
+		<body>
+			<script type="text/javascript">
+				var listsCont = 0;
+				var sum1 = 0;
+				var sum2 = 0;
+				var higher = 1;
+				while(listsCont < 2){
+					var numberCont = 0;
+					while(numberCont < 3){
+						var temp = parseInt(listsCont) + 1;
+						var n = prompt('Enter a number of the list number ' + temp + ': ', '');
+						if(listsCont == 0){
+							sum1 = parseInt(sum1) + parseInt(n);
+						}
+						if(listsCont == 1){
+							sum2 = parseInt(sum2) + parseInt(n);
+						}
+						numberCont++;
+					}
+					listsCont++;
+				}
+
+				if(sum1 < sum2){
+					higher = 2;
+				}
+				document.write('The list with the higher sum is: ' + higher);
+
+			</script>
+		</body>
+	</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+		</head>
+		<body>
+			<script type="text/javascript">
+				var higher = 0;
+				var between = 0;
+				var cont = 0;
+				var sum = 0;
+				while(cont < 5){
+					var n = prompt('Enter a salary: ', '');
+					if((n >= 500) && (n < 1000)){
+						between++;
+					}
+					if(n >= 1000){
+						higher++;
+					}
+					sum = parseInt(n) + parseInt(sum);
+					cont++;
+				}
+				document.write('Salaries between 500 and 1000: ' + between + '<br/>' + 'Salaries higher than 1000: ' + higher + '<br/>' + 'Total sum: ' + sum);
+
+			</script>
+		</body>
+	</html>

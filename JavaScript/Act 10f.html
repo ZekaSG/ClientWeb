@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+		</head>
+		<body>
+			<script type="text/javascript">
+				var cont = 0;
+				var sum = 0;
+				while(cont < 5){
+					var m = prompt('Enter your height in cm: ', '');
+					cont++;
+					var sum = parseInt(m) + parseInt(sum);
+				}
+				var avr = sum/cont;
+				document.write('Average height: ' + avr);
+			</script>
+		</body>
+	</html>

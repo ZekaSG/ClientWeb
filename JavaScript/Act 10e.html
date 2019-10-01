@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+		</head>
+		<body>
+			<script type="text/javascript">
+				var passed = 0;
+				var failed = 0;
+				var cont = 0;
+				while(cont < 10){
+					var m = prompt('Enter a mark: ', '');
+					cont++;
+					if(m < 5){
+						failed++;
+					} else {
+						passed ++;
+					}
+				}
+				document.write('Passed students: ' + passed + '<br/>' + 'Failed students: ' + failed);
+
+			</script>
+		</body>
+	</html>
