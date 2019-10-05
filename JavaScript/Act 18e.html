@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+		</head>
+		<body>
+			<script type="text/javascript">
+				var word = prompt('Enter a word:','');
+				var l = word.length;
+				if((l % 2) == 0){
+					document.write('Half word: ' + word.slice(0, (l / 2)) + '<br/>');
+				} else {
+					document.write('Half word: ' + word.slice(0, ((l / 2) - 0.5)) + '<br/>');
+				}
+				document.write('Last character: ' + word.charAt(l - 1) + '<br/>');
+
+				document.write('Reverse order: ' + word.split('').reverse().join('') + '<br/>');
+
+				document.write('Reverse order: ');
+				for (var i = 0; i < l; i++) {
+					document.write(word.charAt(i) + ' ');
+				}
+				document.write('<br/>');
+
+				var vowels = 0;
+				for (var i = 0; i < l; i++) {
+					if(word.charAt(i) == 'a' || word.charAt(i) == 'e' || word.charAt(i) == 'i' || word.charAt(i) == 'o' || word.charAt(i) == 'u'){
+						vowels++;
+					}
+				}
+				document.write('Vowels: ' + vowels + '<br/>');
+			</script>
+		</body>
+	</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+		</head>
+		<body>
+			<script type="text/javascript">
+				var nums = new Array();
+				for (var i = 0; i < 3; i++) {
+					nums[i] = prompt('Enter a number:','');
+				}
+				nums.sort(function(a, b) {return a-b});
+
+				for (var i = 0; i < 3; i++) {
+					document.write(nums[i] + '<br/>');
+				}
+				
+			</script>
+		</body>
+	</html>

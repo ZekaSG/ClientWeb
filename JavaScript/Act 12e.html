@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+		</head>
+		<body>
+			<script type="text/javascript">
+				var countIso = 0;
+				var countEqui = 0;
+				var countScal = 0;
+				var countMoreKind = 0;
+				var moreKind = '';
+				for (var i = 0; i < 4; i++) {
+					var s1 = prompt('Enter the first side of triagle ' + (parseInt(i)+1) + ':','');
+					var s2 = prompt('Enter the second side of triagle ' + (parseInt(i)+1) + ':','');
+					var s3 = prompt('Enter third side of triangle ' + (parseInt(i)+1) + ':','');
+					
+					if(s1 == s2 && s2 == s3){
+						document.write('Triangle number ' + (parseInt(i)+1) + ' is an equilateral triangle. <br/>');
+						countEqui++;
+						if(countEqui >= countMoreKind){
+							moreKind = 'equilateral'
+						}
+					}
+					if((s1 == s2 && s1 != s3) || (s1 == s3 && s1 != s2) || (s3 == s2 && s1 != s3)){
+						document.write('Triangle number ' + (parseInt(i)+1) + ' is an isosceles triangle. <br/>');
+						countIso++;
+						if(countIso >= countMoreKind){
+							moreKind = 'isosceles'
+						}
+					}
+					if(s1 != s2 && s1 != s3 && s3 != s2){
+						document.write('Triangle number ' + (parseInt(i)+1) + ' is an scalene triangle. <br/>');
+						countScal++;
+						if(countScal >= countMoreKind){
+							moreKind = 'scalene'
+						}
+					}
+				}
+				document.write('There are ' + countEqui + ' equilater triangles, ' + countIso + ' isosceles triangles, and ' + countScal + ' scalene triangles. <br/>');
+				document.write('There are more ' + moreKind + ' triangles than any other.')
+			</script>
+		</body>
+	</html>

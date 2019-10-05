@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+		</head>
+		<body>
+			<script type="text/javascript">
+				var curDate = new Date();
+
+				if((curDate.getMonth() >= 8) && (curDate.getMonth() <= 11)){
+					document.write('First term');
+				} else if((curDate.getMonth() >= 0) && (curDate.getMonth() <= 2)){
+					document.write('Second term');
+				} else if((curDate.getMonth() >= 3) && (curDate.getMonth() <= 5)){
+					document.write('Third term');
+				} else {
+					document.write('Summer holidays');
+				}
+
+			</script>
+		</body>
+	</html>

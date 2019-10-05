@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+		</head>
+		<body>
+			<script type="text/javascript">
+				var sum = 0;
+				var highestAvg = 0;
+				var highestAvgClass = '';
+				for (var i = 0; i < 5; i++) {
+					var n = prompt('Enter mark ' + (parseInt(i) + 1) + ' from class A: ','');
+					sum = parseInt(sum) + parseInt(n);
+				}
+				var avg = sum / 5;
+				document.write('Average from class A is: ' + avg + '<br/>');
+				if(avg >= highestAvg){
+					highestAvg = avg;
+					highestAvgClass = 'A';
+				}
+
+				sum = 0;
+				for (var i = 0; i < 6; i++) {
+					var n = prompt('Enter mark ' + (parseInt(i) + 1) + ' from class B: ','');
+					sum = parseInt(sum) + parseInt(n);
+				}
+				var avg = sum / 6;
+				document.write('Average from class B is: ' + avg + '<br/>');
+				if(avg >= highestAvg){
+					highestAvg = avg;
+					highestAvgClass = 'B';
+				}
+
+				sum = 0;
+				for (var i = 0; i < 11; i++) {
+					var n = prompt('Enter mark ' + (parseInt(i) + 1) + ' from class C: ','');
+					sum = parseInt(sum) + parseInt(n);
+				}
+				var avg = sum / 11;
+				document.write('Average from class C is: ' + avg + '<br/>');
+				if(avg >= highestAvg){
+					highestAvg = avg;
+					highestAvgClass = 'C';
+				}
+
+				document.write('Class ' + highestAvgClass + ' has the highest average.');
+
+			</script>
+		</body>
+	</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+		</head>
+		<body>
+			<script type="text/javascript">
+				var sumPairs = 0;
+				var countPos = 0;
+				var countNeg = 0;
+				var countOdd = 0;
+				for (var i = 0; i < 10; i++) {
+					var n = prompt('Enter a number: ','');
+					if(n > 0){
+						countPos++;
+					}
+					if(n < 0){
+						countNeg++;
+					}
+					if((n%2) == 0){
+						sumPairs = parseInt(sumPairs) + parseInt(n);
+					} else {
+						countOdd++;
+					}
+
+				}
+				document.write('Positive numbers: ' + countPos + ' <br/>' +
+							   'Negative numbers: ' + countNeg + ' <br/>' +
+							   'Odd numbers: ' + countOdd + ' <br/>' +
+							   'Sum of pair numbers: ' + sumPairs + ' <br/>');
+			</script>
+		</body>
+	</html>

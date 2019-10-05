@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+		</head>
+		<body>
+			<script type="text/javascript">
+				var vector = [3, 5, 7, 9, 10, 1, 2, 1];
+				var sum = 0;
+				var sumHigher = 0;
+				var higherFive = 0;
+				for (var i = 0; i < vector.length; i++) {
+					sum = parseInt(sum) + parseInt(vector[i]);
+					if(vector[i] >= 5){
+						higherFive++;
+						sumHigher = parseInt(sumHigher) + parseInt(vector[i]);
+					}
+				}
+				var avr = sum / vector.length;
+				document.write('Total sum: ' + sum + '<br/>');
+				document.write('Total average: ' + avr + '<br/>');
+				document.write('Nums higher than five: ' + higherFive + '<br/>');
+				document.write('Sum of element higher than five: ' + sumHigher + '<br/>');
+				
+			</script>
+		</body>
+	</html>

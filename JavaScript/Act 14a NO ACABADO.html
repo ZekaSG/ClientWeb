@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<script>
+				function Addition(value1, value2){
+					this.value1 = value1;
+					this.value2 = value2;
+
+					this.result = result;
+					function result(){
+						return (parseInt(value1) +  parseInt(value2));
+					}
+
+					value1 = loadValue1();
+					function loadValue1(value){
+						return value;
+					}
+
+					value2 = loadValue2();
+					function loadValue2(value){
+						return value;
+					}
+				}
+			</script>
+		</head>
+		<body>
+			<script type="text/javascript">
+				var n1 = prompt('Number1: ','');
+				var n2 = prompt('Number2: ','');
+				var sum = new Addition(n1, n2);
+				var result = sum.result();
+				document.write(result + '<br/>');
+
+				n1 = prompt('Change number1: ','');
+				sum.loadValue1(n1);
+				result = sum.result();
+				document.write(result + '<br/>');
+
+				n2 = prompt('Change number2: ','');
+				sum.loadValue2(n2);
+				result = sum.result();
+				document.write(result + '<br/>');
+			</script>
+		</body>
+	</html>

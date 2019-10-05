@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<script>
+				function fullName() {
+					var name = document.getElementById('name').value;
+					var surname = document.getElementById('surname').value;
+					alert(name + ' ' + surname);
+				}
+			</script>
+		</head>
+		<body>
+			<form>
+				Name: <input type="text" id="name"> <br/>
+				Surname: <input type="text" id="surname"> <br/>
+				<input type="button" onClick="fullName()" value="Full name">
+			</form>
+		</body>
+	 </html> 

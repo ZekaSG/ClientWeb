@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+		</head>
+		<body>
+			<script type="text/javascript">
+				var count = 0;
+				for (var i = 0; i < 3; i++) {
+					var b = prompt('Enter the base of triagle ' + (parseInt(i)+1) + ':','');
+					var h = prompt('Enter the height of triagle ' + (parseInt(i)+1) + ':','');
+					var A = (h*b)/2;
+					document.write('Area of triangle ' + (parseInt(i)+1) + ': ' + A + '<br/>');
+					if(A > 12){
+						count++;
+					}
+				}
+				document.write('There are ' + count + ' triangles with area biegger than 12.');
+			</script>
+		</body>
+	</html>
