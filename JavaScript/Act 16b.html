@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+		</head>
+		<body>
+			<script type="text/javascript">
+				var length=prompt("Enter the length of your list: ", '');
+				var vector = [];
+				vector[0] = prompt("Enter the first number of the vector: ", '');
+				vector[1] = prompt("Enter the second number of the vector: ", '');
+				for (var i = 2; i <= length; i++) {
+					vector[i] = parseInt(vector[i-1]) + parseInt(vector[i-2]);
+				}
+				for(i in vector){
+					document.write(vector[i] + '<br/>');
+				}
+			</script>
+		</body>
+	</html>

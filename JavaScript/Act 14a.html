@@ -8,17 +8,17 @@
 
 					this.result = result;
 					function result(){
-						return (parseInt(value1) +  parseInt(value2));
+						return (parseInt(this.value1) +  parseInt(this.value2));
 					}
 
-					value1 = loadValue1();
+					this.loadValue1 = loadValue1;
 					function loadValue1(value){
-						return value;
+						this.value1 = value;
 					}
 
-					value2 = loadValue2();
+					this.loadValue2 = loadValue2;
 					function loadValue2(value){
-						return value;
+						this.value2 = value;
 					}
 				}
 			</script>
