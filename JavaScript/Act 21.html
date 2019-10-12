@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		function testPassword(){
+			var psw1 = document.getElementById('psw1').value;
+			var psw2 = document.getElementById('psw2').value;
+			if(psw1 === psw2){
+				alert("Congratulations! Your password is valid.");
+			} else {
+				alert("Your passwords doesn't match.");
+			}
+		}
+	</script>
+</head>
+<body>
+	<form>
+		<a>Enter your password: <input type="password" name="pwd" id="psw1"> </a><br/>
+		<a>Enter your password again: <input type="password" name="pwd2" id="psw2"> </a><br/>
+		<input type="button" onClick="testPassword()" value="Test Password Match">
+	</form>
+</body>
+</html>

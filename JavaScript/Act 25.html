@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+		</head>
+		<body>
+			<form>
+				<script type="text/javascript"> 
+					function showSent() {
+						if (document.getElementById('comments').value.length>2000) {
+							alert('comment too long!');
+						} else {
+							alert('Name: ' + document.getElementById('name').value + 
+								'\nEmail: ' + document.getElementById('email').value +
+								'\n\nComment: ' + document.getElementById('comments').value);
+						}
+						
+					}
+				</script>
+				<form>
+					Name: <input type="text" id="name"> <br/><br/>
+					Email: <input type="email" id="email"> <br/><br/>
+					Comments: <br/>
+					<textarea id="comments" rows="10" cols="50" ></textarea> <br/>
+					<br/>
+
+					<input type="button" onClick="showSent()" value="Send">
+				</form>
+		</body>
+	</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+		</head>
+		<body>
+			<form>
+				<script type="text/javascript"> 
+					function pricePizza() {
+						var sel=document.getElementById('selectPizza');
+						document.getElementById('text').value=sel.options[sel.selectedIndex].value;
+					}
+				</script>
+				<select id="selectPizza" onChange="pricePizza()">
+					<option value="6€"> Pepperoni </option>
+					<option value="5€"> Quatro Formaggi </option>
+					<option value="4€"> Procciuto </option>
+					<option value="7€"> Pinia </option>
+				</select> 
+				<br/><br/>
+				Price: <input type="text" id="text">
+			</form>
+		</body>
+	</html>

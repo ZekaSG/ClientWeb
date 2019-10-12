@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+	<html>
+		<head></head>
+		<body>
+			<script type="text/javascript">
+				var blue = '#ff9999';
+				var white = '#FFFFFF';
+				function paintRow(thing, state){
+					if(state == 1){
+						thing.bgColor = blue;
+					}
+					if(state === undefined){
+					 	thing.bgColor = white;
+					}
+				}
+			</script>
+			<table border="1">
+				<tr onMouseOver="paintRow(this, 1)" onMouseOut="paintRow(this)">
+					<th>  </th>
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+					<th>4</th>
+					<th>5</th>
+					<th>6</th>
+					<th>7</th>
+					<th>8</th>
+					<th>9</th>
+					<th>10</th>
+				</tr>
+				<tr onMouseOver="paintRow(this, 1)" onMouseOut="paintRow(this)">
+					<th>3</th>
+					<td>3</td>
+					<td>6</td>
+					<td>9</td>
+					<td>12</td>
+					<td>15</td>
+					<td>18</td>
+					<td>21</td>
+					<td>24</td>
+					<td>27</td>
+					<td>30</td>	
+				</tr>
+				<tr onMouseOver="paintRow(this, 1)" onMouseOut="paintRow(this)">
+					<th>6</th>
+					<td>6</td>
+					<td>12</td>
+					<td>18</td>
+					<td>24</td>
+					<td>30</td>
+					<td>36</td>
+					<td>42</td>
+					<td>48</td>
+					<td>54</td>
+					<td>60</td>	
+				</tr>
+			</table>
+		</body>
+	</html>

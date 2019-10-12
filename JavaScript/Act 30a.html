@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<script type="text/javascript">
+				function randomBrowser(){
+					var n = Math.floor(Math.random() * 3);
+					switch (n){
+						case 0:
+							window.location = 'https://www.google.com/';
+							break;
+						case 1: 
+							window.location = 'https://es.yahoo.com/';
+							break;
+						case 2:
+							window.location = 'https://www.bing.com/';
+							break;
+						default:
+							document.write('An error occurred')
+					}
+				}
+			</script>
+		</head>
+		<body>
+			<a href="javascript:randomBrowser()">Random Browser</a>
+		</body>
+	</html>

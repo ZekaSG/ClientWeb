@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+		</head>
+		<body>
+			<form>
+				<script type="text/javascript"> 
+					function calculatePrice() {
+						var sel = document.getElementById('selectPizza');
+						var valP = sel.options[sel.selectedIndex].value;
+						var quant = document.getElementById('quantity');
+						var quantVal = quant.value;
+						document.getElementById('text').value = valP * quantVal;
+					}
+				</script>
+				Select a pizza: 
+				<select id="selectPizza">
+					<option value="6"> Pepperoni </option>
+					<option value="5"> Quatro Formaggi </option>
+					<option value="4"> Procciuto </option>
+					<option value="7"> Pinia </option>
+				</select> <br/><br/>
+
+				Number of pizzas: <input type="text" id="quantity"><br><br/>
+				<input type="button" onClick="calculatePrice()" value="Calculate"> <br/><br/>
+				
+				Price: <input type="text" id="text">
+			</form>
+		</body>
+	</html>

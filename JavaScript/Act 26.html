@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+		</head>
+		<body>
+			<form>
+				<script type="text/javascript"> 
+					function checkPassword() {
+						var leng = document.getElementById('password').value.length;
+						if (leng > 20 || leng < 7) {
+							alert('Invalid password length!');
+						} else {
+							alert('Succesful enter.');
+						}
+						
+					}
+				</script>
+				<form>
+					Email: <input type="email" id="email"> <br/>
+					Password: <input type="password" id="password"> <br/><br/>
+
+					<input type="button" onClick="checkPassword()" value="Enter">
+				</form>
+		</body>
+	</html>

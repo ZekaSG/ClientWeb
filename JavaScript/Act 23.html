@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+		</head>
+		<body>
+			<form>
+				<script type="text/javascript"> 
+					function showPressed() {
+						var sports = "Your selected sports:"
+						if(document.getElementById("checkbox1").checked){
+							sports = sports + "\n - Football"
+						}
+						if(document.getElementById("checkbox2").checked){
+							sports = sports + "\n - Tennis"
+						}
+						if(document.getElementById("checkbox3").checked){
+							sports = sports + "\n - Karate"
+						}
+						alert(sports);
+						
+					}
+				</script>
+				<form>
+					<input type="checkbox" id="checkbox1">Football <br/>
+					<input type="checkbox" id="checkbox2">Tennis <br/>
+					<input type="checkbox" id="checkbox3">Karate <br/>
+					<br/>
+
+					<input type="button" onClick="showPressed()" value="Show pressed buttons"> <br/><br/>
+				</form>
+		</body>
+	</html>

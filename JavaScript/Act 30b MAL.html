@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<script type="text/javascript">
+				function popUp(){
+					var x = screen.width; 
+					var y = screen.height/2;
+					document.write("Width: " + x + "\nHeight: " + y);
+					var w = open('','','width=x,height=y'); 
+				}
+			</script>
+		</head>
+		<body>
+			<input type="button" value="Open new Window" onClick="popUp()" >
+
+		</body>
+	</html>

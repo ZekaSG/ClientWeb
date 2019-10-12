@@ -1,0 +1,4 @@
+Persones (Nom, email, edat, anysExperienciaLaboral, sexe)
+Cercar: per sexe
+Ordenar: per edat
+Num persones anysExperienciaLaboral >= 10

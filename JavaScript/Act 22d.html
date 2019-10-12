@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+		</head>
+		<body>
+			<form>
+				<script type="text/javascript"> 
+					function calculateMark() {
+						var mark = parseFloat(0);
+						var sel1 = document.getElementById('select1');
+						if (sel1.options[sel1.selectedIndex].value == "true") {
+							mark = mark + parseFloat(2.5);
+						}
+						var sel2 = document.getElementById('select2');
+						if (sel2.options[sel2.selectedIndex].value == "true") {
+							mark = mark + parseFloat(2.5);
+						}
+						var sel3 = document.getElementById('select3');
+						if (sel3.options[sel3.selectedIndex].value == "true") {
+							mark = mark + parseFloat(2.5);
+						}
+						var sel4 = document.getElementById('select4');
+						if (sel4.options[sel4.selectedIndex].value == "true") {
+							mark = mark + parseFloat(2.5);
+						}
+						alert("Your mark is " + mark + "!");
+					}
+				</script>
+
+				<p> How much is 10^-3? </p>
+				<select id="select1">
+					<option value="true"> 0,001 </option>
+					<option value="false"> -30 </option>
+					<option value="false"> 1000 </option>
+					<option value="false"> 30 </option>
+				</select> <br/>
+
+				<p> Where did Christopher Columbus borned? </p>
+				<select id="select2">
+					<option value="false"> Cuba </option>
+					<option value="false"> Spain </option>
+					<option value="true"> Genoa </option>
+					<option value="false"> England </option>
+				</select> <br/>
+
+				<p> Wich is the best animal? </p>
+				<select id="select3">
+					<option value="false"> Dog </option>
+					<option value="false"> Frog </option>
+					<option value="false"> Lion </option>
+					<option value="true"> Cat </option>
+				</select> <br/>
+
+				<p> What's my name? </p>
+				<select id="select4">
+					<option value="false"> Salvador </option>
+					<option value="true"> José </option>
+					<option value="false"> Carlos </option>
+					<option value="false"> Gomes </option>
+				</select> <br/>
+				<br/>
+				<input type="button" onClick="calculateMark()" value="Calculate">
+			</form>
+		</body>
+	</html>
