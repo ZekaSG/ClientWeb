@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<script src="jquery-3.4.1.js"></script>
+			
+		</head>
+		<body>
+			<h1>Title 1</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi maxime maiores a dolores. Possimus aspernatur similique ullam debitis, accusamus non asperiores officia ipsam quasi sapiente eius deserunt error vero est.</p>
+			<h1>Title 2</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi maxime maiores a dolores. Possimus aspernatur similique ullam debitis, accusamus non asperiores officia ipsam quasi sapiente eius deserunt error vero est.</p>
+			<h1>Title 3</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi maxime maiores a dolores. Possimus aspernatur similique ullam debitis, accusamus non asperiores officia ipsam quasi sapiente eius deserunt error vero est.</p>
+			<h1>Title 4</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi maxime maiores a dolores. Possimus aspernatur similique ullam debitis, accusamus non asperiores officia ipsam quasi sapiente eius deserunt error vero est.</p>
+			<h1>Title 5</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi maxime maiores a dolores. Possimus aspernatur similique ullam debitis, accusamus non asperiores officia ipsam quasi sapiente eius deserunt error vero est.</p>
+
+			<button  type="button" onclick="changeSize('10px')">Make small</button>
+			<button  type="button" onclick="changeSize('15px')">Make medium</button>
+			<button  type="button" onclick="changeSize('20px')">Make big</button>
+
+			<script>
+				function changeSize(thing){
+					$("p:odd").css("font-size", thing);
+				};
+			</script>
+		</body>
+	</html>

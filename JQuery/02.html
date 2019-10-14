@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<script src="jquery-3.4.1.js"></script>
+			<style type="text/css">
+				table, tr, td{
+					border:solid 1px;
+					border-collapse: collapse;
+					padding: 7px;
+				}
+			</style>
+		</head>
+		<body>
+			<table>
+				<tr id="tr1">
+					<td>Hola</td>
+					<td>Hola</td>
+					<td>Hola</td>
+				</tr>
+				<tr id="tr2">
+					<td>Hola</td>
+					<td>Hola</td>
+					<td>Hola</td>
+				</tr>
+			</table>
+			<script type="text/javascript">
+				$(document).ready(function(){
+					$("#tr1").click(function(){
+						$(this).css("background-color", "crimson");
+					});
+					$("#tr2").click(function(){
+						$(this).css("background-color", "lightblue");
+					});
+				});
+			</script>
+		</body>
+	</html>

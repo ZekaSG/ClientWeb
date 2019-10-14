@@ -32,23 +32,41 @@
 			var anys = document.getElementById("anys").value;
 			var sexe = document.getElementById("sexe").value;
 
+			var invalid = false;
+			var c = undefined;
+
+			//Comprova si l'email compleix el pattern
 			var pattEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-			if(pattEmail.test(email)){
-				if(sexe === 'M' || sexe === 'F'){
-					var c = new Persona(nom, email, edat, anys, sexe);
-					return c;
-				} else {
-					alert("Génere invalid!");
-					var c = undefined;
-					return c;
-				}
-			} else {
+			if(!pattEmail.test(email)){
 				alert("Correu invalid!");
-				var c = undefined;
-				return c;
+				invalid = true;
 			}
 
-			
+			//Comprova si l'email ja surt
+			for(i in list){
+				if(list[i].email == email){
+					alert("Email duplicat, usuari ja introduit!");
+					invalid = true;
+					break;
+				}
+			}
+
+			//Comprova si el sexe es valid
+			if(!(sexe.toUpperCase() === 'M' || sexe.toUpperCase() === 'F')){
+				alert("Génere invalid!");
+				invalid = true;
+			}
+
+			//Comprova que l'edat no sigui menor a 0
+			if(edat < 0 || anys < 0){
+				alert("Edat o anys d'experiencia no vàlids!");
+				invalid = true;
+			}
+
+			if(!invalid){
+				var c = new Persona(nom, email, edat, anys, sexe);
+			}
+			return c;
 		}
 
 		function afegirInici(){
@@ -118,11 +136,11 @@
 			</div>
 			<div>
 				<label for="item">Edat: </label>
-				<input type="text" id="edat" />
+				<input type="number" id="edat" />
 			</div>
 			<div>
 				<label for="item">Anys d'experiencia: </label>
-				<input type="text" id="anys" />
+				<input type="number" id="anys" />
 			</div>
 			<div>
 				<label for="item">Sexe(M/F): </label>

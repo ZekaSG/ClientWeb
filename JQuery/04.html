@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<script src="jquery-3.4.1.js"></script>
+			<style type="text/css">
+				table, tr, td{
+					border:solid 1px;
+					border-collapse: collapse;
+					padding: 7px;
+				}
+			</style>
+		</head>
+		<body>
+			<table id="t1">
+				<tr>
+					<td>Hola</td>
+					<td>Hola</td>
+					<td>Hola</td>
+				</tr>
+				<tr>
+					<td>Hola</td>
+					<td>Hola</td>
+					<td>Hola</td>
+				</tr>
+				<tr>
+					<td>Hola</td>
+					<td>Hola</td>
+					<td>Hola</td>
+				</tr>
+			</table>
+			<br/><br/>
+			<table id="t2">
+				<tr>
+					<td>Hola2</td>
+					<td>Hola2</td>
+					<td>Hola2</td>
+				</tr>
+				<tr>
+					<td>Hola2</td>
+					<td>Hola2</td>
+					<td>Hola2</td>
+				</tr>
+				<tr>
+					<td>Hola2</td>
+					<td>Hola2</td>
+					<td>Hola2</td>
+				</tr>
+			</table>
+			<script>
+				$(document).ready(function(){
+					$("#t1 >> tr").click(function(){
+						$(this).css("background-color", "crimson");
+					});
+					$("#t2 >> tr").click(function(){
+						$(this).css("font-size", "150%");
+					});
+				});
+			</script>
+		</body>
+	</html>
