@@ -1,0 +1,15 @@
+Persones (Nom, email, edat, anysExperienciaLaboral, sexe)
+Cercar: per sexe
+Ordenar: per edat
+Num persones anysExperienciaLaboral >= 10
+
+
+ACTIVITAT AD-HOC : Custom Object Array.
+	a. Definir un objecte (propietats i mètodes) mitjançant una classe.
+	b. Gestionar un array d’objectes.
+		i. Visualitzar. Num Ítems.
+		ii. Afegir Primer, Darrer, Posició. Evitar Repetits.
+		iii. Eliminar Item, Primer, Darrer, Posició.
+		iv. Cercar Item(s). Retornar array de posicions.
+		v. Ordenar (Ascendent, Descendent).
+		vi. Càlcul COUNT de propietat = valor.

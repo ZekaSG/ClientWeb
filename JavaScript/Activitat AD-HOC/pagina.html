@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="Persona.js"></script> 
+	<script type="text/javascript">
+
+	 	function printList(sexe){
+			var txt="<tr><th>Nom</th><th>email</th><th>edat</th><th>anysExp</th><th>sexe</th></tr>";
+			for(var i=0; i<list.length; i++){
+				if(sexe == undefined){
+					var info=list[i].info();
+					txt = txt + "<tr>" + info + "</tr>";
+				} else {
+					if(list[i].sexe == sexe){
+						var info=list[i].info();
+						txt = txt + "<tr>" + info + "</tr>";
+					}
+				}
+				
+			}
+			var u = document.getElementById("taula");
+			u.innerHTML = txt;
+			var n = document.getElementById("numPers");
+			n.innerText = list.length;
+		}
+
+		function novaPersona(){ 
+			var nom = document.getElementById("nom").value;
+			var email = document.getElementById("email").value;
+			var edat = document.getElementById("edat").value;
+			var anys = document.getElementById("anys").value;
+			var sexe = document.getElementById("sexe").value;
+
+			var pattEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+			if(pattEmail.test(email)){
+				if(sexe === 'M' || sexe === 'F'){
+					var c = new Persona(nom, email, edat, anys, sexe);
+					return c;
+				} else {
+					alert("Génere invalid!");
+					var c = undefined;
+					return c;
+				}
+			} else {
+				alert("Correu invalid!");
+				var c = undefined;
+				return c;
+			}
+
+			
+		}
+
+		function afegirInici(){
+			var c = novaPersona();
+			if(c != undefined){
+				list.unshift(c);
+				printList();
+			}
+		}
+
+		function afegirFinal(){
+			var c = novaPersona();
+			if(c != undefined){
+				list.push(c);
+				printList();
+			}
+		}
+
+		function llevarInici(){
+			list.shift();
+			printList();
+		}
+
+		function llevarFinal(){
+			list.pop();
+			printList();
+		}
+
+		function ordenarEdatAsc(){
+			list.sort(function(a,b){ return (a.edat>b.edat)?1:-1;});
+			printList();
+		}
+
+		function ordenarEdatDes(){
+			list.sort(function(a,b){ return (a.edat>b.edat)?-1:1;});
+			printList();
+		}
+
+		function expMajorA(exp){
+			var n = 0;
+			for( c of list){
+				if(c.anysExperiencia >= exp){
+					n++;
+				}
+			}
+			alert("Hi ha " + n + " persones amb més de " + exp + " anys d'experiencia laboral.");
+		}
+
+	</script>
+</head>
+<body>
+	<div>
+		<h4><span id="numPers"></span> Persones</h5>
+		<table width="500" id='taula'>
+		</table>
+	</div>
+	
+	<div>
+  		<form>
+			<div>
+				<label for="item">Nom: </label>
+				<input type="text" id="nom" />
+			</div>
+			<div>
+				<label for="item">Email: </label>
+				<input type="text" id="email" />
+			</div>
+			<div>
+				<label for="item">Edat: </label>
+				<input type="text" id="edat" />
+			</div>
+			<div>
+				<label for="item">Anys d'experiencia: </label>
+				<input type="text" id="anys" />
+			</div>
+			<div>
+				<label for="item">Sexe(M/F): </label>
+				<input type="text" id="sexe" />
+			</div>
+		</form>
+		<div id="buttsMod">
+			<button  type="button" onclick="afegirInici()">Afegir inici</button>
+			<button  type="button" onclick="afegirFinal()">Aegir final</button>
+			<button  type="button" onclick="llevarInici()">Llevar inici</button>
+			<button  type="button" onclick="llevarFinal()">Llevar final</button>
+		</div>
+	</div>
+	<div>
+		<button  type="button" class="btnS" onclick="printList('M')">Mostrar homes</button>
+		<button  type="button" class="btnS" onclick="printList('F')">Mostrar dones</button>
+		<button  type="button" class="ordr" onclick="ordenarEdatAsc()">Odernar ascendent per edat</button>
+		<button  type="button" class="ordr" onclick="ordenarEdatDes()">Odernar descendent per edat</button>
+		<button  type="button" class="exp" onclick="expMajorA(10)">Més de 10 anys d'experiencia</button>
+	</div>
+	<script>
+		
+		// Crea l'array inicialment buit
+		var list = [];
+		
+		// Afegeix 3 persones emprant el constructor
+		list[0]= new Persona("José Carlos", "akez1999@gmail.com", 20, 3, "M");
+		list[1]= new Persona("Carlos", "weh_34@gmail.org", 27, 13, "M");
+		list[2]= new Persona("Maria", "mariaqq@hotmail.com", 32, 12, "F");
+		// Mostra l'array en una llista 
+		printList();
+	</script>
+</body>
+</html>
