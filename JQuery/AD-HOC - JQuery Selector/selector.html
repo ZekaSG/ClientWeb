@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<script src="../jquery-3.4.1.js"></script>
+			<style type="text/css">
+				div{
+					padding: 14px;
+					margin: 3px;
+					border: solid 2px;
+					background-color: LightCyan;
+					border-radius: 10px;
+				}
+				div > div {
+					background-color: PaleTurquoise;
+					padding: 3px;
+				}
+				div.button{
+					display: inline-block;
+				}
+			</style>
+		</head>
+		<body>
+			<div>
+				<div id="M">
+					<p id="akez1999" class="poca">  akez1999@gmail.com, José Carlos, <b>20</b>, poca, M </p>
+					<p id="benjaminhu" class="poca">  benjaminhu@gmail.com, Benjamin Caleb, <b>19</b>, poca, M </p>
+					<p id="zekasg" class="molta">  zekasg@gmail.com, Zé Carlos, <b>30</b>, molta, M </p>
+				</div>
+				<div id="F">
+					<p id="airam34" class="mitjana">  airam34@gmail.com, María, <b>25</b>, mitjana, F </p>
+					<p id="luisagh" class="molta">  luisagh@gmail.com, Luisa, <b>46</b>, molta, F </p>
+					<p id="anastasiauio" class="poca">  anastasiauio@gmail.com, Anastasia Vocal, <b>17</b>, poca, F </p>
+				</div>
+			</div>
+
+			<form>
+				<div class="button">
+					Id(email before @ o M/F): <br/><input type="text" id="id"><br/>
+					<input type="button" value="Cerca per id" id="idButton">
+				</div>	
+				<div class="button">
+					Experiencia: <br/><input type="text" id="exp"><br/>
+					<input type="button" value="Cerca per experiencia" id="expButton">
+				</div>
+				<div class="button">
+					Tag: <br/><input type="text" id="tag"><br/>
+					<input type="button" value="Cerca per id" id="tagButton">
+				</div>
+			</form>
+			<script>
+				$(document).ready(function(){
+					$("#idButton").click(function(){
+						clear();
+						var cerca = $("#id").val();
+        				var eSeleccionat = $("#" + cerca + ", #" + cerca + " *");;
+        				eSeleccionat.css({"background-color":"#ff9999"});
+					});
+					$("#expButton").click(function(){
+						clear();
+						var cerca = $("#exp").val();
+        				var eSeleccionat = $("."+cerca + ", ." + cerca + " *");;
+        				eSeleccionat.css({"background-color":"#ff9999"});
+					});
+					$("#tagButton").click(function(){
+						clear();
+						var cerca = $("#tag").val();
+        				var eSeleccionat = $("" + cerca + ", " + cerca + " *");;
+        				eSeleccionat.css({"background-color":"#ff9999"});
+					});
+					function clear(){
+						$("div").css({"background-color":"LightCyan"});
+						$("div > div, p, b").css({"background-color":"PaleTurquoise"});
+					}
+				});
+			</script>
+		</body>
+	</html>

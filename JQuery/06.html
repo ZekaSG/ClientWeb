@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<script src="jquery-3.4.1.js"></script>
+			
+		</head>
+		<body>
+			<table id="t1">
+				<tr>
+					<td>OFF</td>
+					<td>OFF</td>
+					<td>OFF</td>
+				</tr>
+				<tr>
+					<td>OFF</td>
+					<td>OFF</td>
+					<td>OFF</td>
+				</tr>
+				<tr>
+					<td>OFF</td>
+					<td>OFF</td>
+					<td>OFF</td>
+				</tr>
+			</table>
+			<br/><br/>
+			<table id="t2">
+				<tr>
+					<td>OFF</td>
+					<td>OFF</td>
+					<td>OFF</td>
+				</tr>
+				<tr>
+					<td>OFF</td>
+					<td>OFF</td>
+					<td>OFF</td>
+				</tr>
+				<tr>
+					<td>OFF</td>
+					<td>OFF</td>
+					<td>OFF</td>
+				</tr>
+			</table>
+			<input type="button" value="On" id="onBtn">
+			<script>
+				$(document).ready(function(){
+					$("#onBtn").click(function(){
+						$("#t1 td").text("ON");
+					});
+				});
+			</script>
+		</body>
+	</html>

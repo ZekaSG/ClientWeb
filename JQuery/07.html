@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<script src="jquery-3.4.1.js"></script>
+			
+		</head>
+		<body>
+			<a href="" id="link">Link!</a><br/><br/>
+			<input type="button" value="Google" id="btn1">
+			<input type="button" value="Yahoo" id="btn2">
+			<input type="button" value="Bing" id="btn3">
+			<script>
+				$(document).ready(function(){
+					$("#btn1").click(function(){
+						$("#link").attr("href", "https://www.google.es/");
+					});
+					$("#btn2").click(function(){
+						$("#link").attr("href", "https://es.yahoo.com/");
+					});
+					$("#btn3").click(function(){
+						$("#link").attr("href", "https://www.bing.com/?setlang=es");
+					});
+				});
+			</script>
+		</body>
+	</html>
