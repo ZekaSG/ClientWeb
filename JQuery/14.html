@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<script src="jquery-3.4.1.js"></script>			
+		</head>
+		<body>
+			<button id="btn1">Button 1</button>
+			<button id="btn2">Button 2</button>
+			<script>
+				$(document).ready(function(){
+					$("button").mousedown(function(){
+						$(this).css("background-color","lightblue");
+					});
+					$("button").mouseup(function(){
+						$(this).css("background-color","");
+					});
+				});
+			</script>
+		</body>
+	</html>

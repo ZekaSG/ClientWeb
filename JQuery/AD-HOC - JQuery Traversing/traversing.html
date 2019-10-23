@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<script src="../jquery-3.4.1.js"></script>
+			<style type="text/css">
+				div{
+					padding: 14px;
+					margin: 3px;
+					border: solid 2px;
+					background-color: LightCyan;
+					border-radius: 10px;
+				}
+				div > div {
+					background-color: PaleTurquoise;
+					padding: 3px;
+				}
+				div.button{
+					display: inline-block;
+				}
+			</style>
+		</head>
+		<body>
+			<div>
+				<div id="M">
+					<p id="akez1999" class="poca">  akez1999@gmail.com, José Carlos, <b>20</b>, poca, M </p>
+					<p id="benjaminhu" class="poca">  benjaminhu@gmail.com, Benjamin Caleb, <b>19</b>, poca, M </p>
+					<p id="zekasg" class="molta">  zekasg@gmail.com, Zé Carlos, <b>30</b>, molta, M </p>
+				</div>
+				<div id="F">
+					<p id="airam34" class="mitjana">  airam34@gmail.com, María, <b>25</b>, mitjana, F </p>
+					<p id="luisagh" class="molta">  luisagh@gmail.com, Luisa, <b>46</b>, molta, F </p>
+					<p id="anastasiauio" class="poca">  anastasiauio@gmail.com, Anastasia Vocal, <b>17</b>, poca, F </p>
+				</div>
+			</div>
+
+			<form>
+
+				<div class="button">
+					<label>Sexe</label>
+					<select id="gender">
+						<option value="#M">M</option>
+						<option value="#F">F</option>
+					</select>
+				</div>
+				<div class="button">
+					<input type="button" value="+Vell" id="mesVell">
+				</div>
+				<div class="button">
+					<input type="button" value="+Jove" id="mesJove" class="button">
+				</div>
+
+			</form>
+			<script>
+				$(document).ready(function(){
+
+					$("#mesVell").click(function(){
+						limitEdat("vell");
+					});
+
+					$("#mesJove").click(function(){
+						limitEdat("jove");
+					});
+
+					function limitEdat(limit) {
+						clear();
+						var sexe = $("#gender").val();
+						var people = $(sexe).children();
+						var limitAge;
+
+						//Cerca de la major edat
+						if (limit === "vell") {
+							$(people).each(function () {
+								var age = $(this).children("b").html();
+								if (age >= limitAge || limitAge === undefined) {
+									limitAge = age;
+								}
+							});
+						}
+
+						//Cerca de la menor edat
+						if (limit === "jove") {
+							$(people).each(function () {
+								var age = $(this).children("b").html();
+								if (age <= limitAge || limitAge === undefined) {
+									limitAge = age;
+								}
+							});
+						}
+
+						//Marca totes les persones que tenguin la edat trobada
+						$(people).each(function () {
+							var age = $(this).children("b").html();
+
+							if (age == limitAge) {
+								var id = $(this).attr('id');
+								var eSeleccionat = $("#" + id + ", #" + id + " *");
+								eSeleccionat.css({"background-color": "#ff9999"});
+							}
+						});
+					}
+
+
+					function clear(){
+						$("div").css({"background-color":"LightCyan"});
+						$("div > div, p, b").css({"background-color":"PaleTurquoise"});
+					}
+				});
+			</script>
+		</body>
+	</html>

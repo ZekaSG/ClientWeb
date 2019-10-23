@@ -5,17 +5,38 @@
 			<style type="text/css">
 				#div{
 					width: 200px;
-					height: 200px;		
+					height: 200px;	
+					background-color: lightCyan;
+					border: solid 1px;
+				}
+				#div p{
+					text-align: center;
 				}
 			</style>
 			
 		</head>
 		<body>
-			<div id="div"></div>
+			<div id="div">
+				<p id="status"></p>
+				<p id="corx"></p>
+				<p id="cory"></p>
+			</div>
 			<script>
 				$(document).ready(function(){
-					$(document).mousemove()
+					$(document).mousemove(moveMouse);
 				});
+
+				function moveMouse(event) {
+					if(event.pageX < 210 && event.pageY < 210){
+						$("#status").text("Status = Inside");
+						$("#corx").text("X = "+event.pageX);
+						$("#cory").text("Y = "+event.pageY);
+					} else {
+						$("#status").text("Status = Mouse out of the DIV");
+						$("#corx").text("");
+						$("#cory").text("");
+					}
+				}
 			</script>
 		</body>
 	</html>

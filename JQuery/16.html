@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<script src="jquery-3.4.1.js"></script>
+			<style type="text/css">
+				.text{
+					color: blue;
+				}
+			</style>
+			
+		</head>
+		<body>
+			<form>
+				Text 1: <input type="text" class="text"><br/>
+				Text 2: <input type="text" class="text">
+			</form>
+			<script>
+				$(document).ready(function(){
+					$(".text").focus(function(){
+							$(this).css("color", "red");
+					});
+				});
+			</script>
+		</body>
+	</html>

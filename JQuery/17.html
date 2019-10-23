@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<script src="jquery-3.4.1.js"></script>
+		</head>
+		<body>
+			<form>
+				Text: <input type="text" id="text">
+			</form>
+			<script>
+				$(document).ready(function(){
+					$("#text").blur(function(){
+							if(!($(this).val())){
+								alert("Field can't be empty");
+							}
+					});
+				});
+			</script>
+		</body>
+	</html>
