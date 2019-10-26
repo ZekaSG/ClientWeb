@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <script src="jquery-3.4.1.js"></script>
+            <script type="text/javascript" src="26.js"></script>
+            <title>Title</title>
+            <style>
+                #result {
+                    border: solid 1px;
+                    height: 50px;
+                    width: 50px;
+                    text-align: center;
+                    vertical-align: center;
+                    background-color: #9fcdff;
+                }
+            </style>
+        </head>
+        <body>
+        <h4>Workers from
+        <select method="get" id="selector">
+            <option value="PALMA">PALMA</option>
+            <option value="INCA">INCA</option>
+            <option value="MANACOR">MANACOR</option>
+            <option value="SOLLER">SOLLER</option>
+        </select>
+        </h4>
+        <ul id="list"></ul>
+        <script>
+            $(document).ready(function(){
+                $("#selector").change(function(){
+                    $.getJSON("26.js",function(people){
+                        var fullList = people;
+                        var list = [];
+                        var txt = "";
+                        $(fullList).each(function () {
+                            if($(this)[0]["city"] == $("#selector option:selected").attr("value")){
+                                txt = txt + "<li>" + $(this)[0]["name"] + ", " + $(this)[0]["age"] + " years old</li>";
+                                $("#list").html(txt);
+                            };
+                        });
+                    });
+                });
+            });
+        </script>
+        </body>
+    </html>
