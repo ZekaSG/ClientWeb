@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<script src="jquery-3.4.1.js"></script>
+		</head>
+		<body>
+			<form id="texts"></form><br/>
+			<input type="button" id="add" value="Add new text">
+			<script>
+				$(document).ready(function(){
+					var contVar = 0;
+
+					$("#add").click(function(){
+						var div = $("<div/>", {id: 'div_' + contVar});
+						var idDiv = '#div_' + contVar;
+						var text = $("<input/>", {type: "text"});
+						var deleteB = $("<input/>", {type: "button", onclick: "deleteDiv('" + idDiv + "')", value: "Remove"});
+						var br = "<br/>";
+
+						div.append(text);
+						div.append(deleteB);
+						div.append(br);
+						div.append(br);
+
+						$("#texts").append(div);
+						contVar++;
+					});
+				});
+
+				function deleteDiv(id){
+					$(id).remove();
+				}
+			</script>
+		</body>
+	</html>

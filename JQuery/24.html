@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <script src="jquery-3.4.1.js"></script>
+            <title>Title</title>
+        </head>
+        <body>
+            <div id="box"></div>
+            <input id="but1" type="button" value="Insert File 1">
+            <input id="but2" type="button" value="Insert File 2">
+
+            <script>
+                $(document).ready(function(){
+                    $("#but1").click(function(){
+                        $("#box").load("24_1.txt");
+                    });
+
+                    $("#but2").click(function(){
+                        $("#box").load("24_2.txt");
+                    });
+                });
+            </script>
+        </body>
+    </html>

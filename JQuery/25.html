@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <script src="jquery-3.4.1.js"></script>
+            <title>Title</title>
+            <style>
+                #result {
+                    border: solid 1px;
+                    height: 50px;
+                    width: 50px;
+                    text-align: center;
+                    vertical-align: center;
+                    background-color: #9fcdff;
+                }
+            </style>
+        </head>
+        <body>
+            <form method="get" id="myForm">
+                <input id="oper1" type="text" size="6">
+                <input id="oper2" type="text" size="6"><br/><br/>
+                <input id="Sum" type="button" value="Add" class="buttn">
+                <input id="Subs" type="button" value="Subtract" class="buttn">
+                <input id="Prod" type="button" value="Product" class="buttn">
+                <input id="Div" type="button" value="Divide" class="buttn"><br/><br/>
+                <div id="result"></div>
+            </form>
+
+            <script>
+                $(document).ready(function(){
+                    $(".buttn").click(function(){
+                        var operation = $(this).attr("id");
+                        var num1 = $("#oper1").val();
+                        var num2 = $("#oper2").val();
+                        $.get("25.php",{operation:operation, num1:num1, num2:num2}, dataArrived);
+                    });
+
+                    function dataArrived(data){
+                        console.log(data);
+                        $("#result").html(data);
+
+                    }
+                });
+            </script>
+        </body>
+    </html>

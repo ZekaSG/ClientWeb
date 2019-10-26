@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="jquery-3.4.1.js"></script>
+    <title>Title</title>
+    <style>
+        table, tr, td {
+            border: solid 1px;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+
+        .button {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>
+                <img id="img1" src="https://html.com/wp-content/plugins/htmlcodetutorial-plugin/assets/images/firefox-true.png" alt="Italian Trulli">
+                <br/>
+                <input type="button" value="Toggle" class="button">
+            </td>
+            <td>
+                <img id="img2" src="https://upload.wikimedia.org/wikipedia/ca/thumb/9/92/2000px-Google_Chrome_2011_logo.png/240px-2000px-Google_Chrome_2011_logo.png" alt="Italian Trulli">
+                <br/>
+                <input type="button" value="Toggle" class="button">
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        $(document).ready(function(){
+
+            $(".button").click(function(){
+                var img = [];
+                img[0] = $(this).siblings("img");
+                img[0].toggle("slow");
+            });
+        });
+    </script>
+</body>
+</html>

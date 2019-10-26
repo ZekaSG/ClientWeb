@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="jquery-3.4.1.js"></script>
+    <style>
+        div {
+            padding: 10px;
+            background-color: lightblue;
+            border: solid 1px;
+        }
+
+        #div2 {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="div">
+        <p>DIV 1</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet, aut autem deserunt dolore ea ex, in, ipsam magni non placeat quam quidem quo repellendus rerum sunt veritatis vitae voluptas.</p>
+        <p>A amet, aut autem deserunt dolore ea ex, in, ipsam magni non placeat quam quidem quo repellendus rerum sunt veritatis vitae voluptas.</p>
+    </div>
+    <script>
+        $(document).ready(function(){
+           $("#div").click(function(){
+               $(this).fadeTo("slow", 0.20);
+           });
+
+            $("#div").dblclick(function(){
+                $(this).fadeTo("slow", 1);
+            });
+        });
+    </script>
+</body>
+</html>

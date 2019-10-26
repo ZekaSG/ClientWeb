@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <script src="jquery-3.4.1.js"></script>
+            <title>Title</title>
+        </head>
+        <body>
+            <ul id="list">
+                <li><a href="https://www.w3schools.com">W3Schools</a></li>
+                <li><a href="https://www.amazon.es/">Amazon Espanya</a></li>
+                <li><a href="https://www.amazon.com/">Amazon USA</a></li>
+                <li><a href="https://www.google.es/">Google</a></li>
+            </ul>
+
+
+            <script>
+                $(document).ready(function(){
+                    var pages = $("#list").children();
+                    $(pages).each(function () {
+                        var apperatsEs = $(this).find("a").attr("href").indexOf(".es");
+                        if(apperatsEs !== -1){
+                            highlight(this);
+                        };
+                    });
+
+                    function highlight(id){
+                        $(id).css("background-color", "#ff9999");
+                    }
+                });
+            </script>
+        </body>
+    </html>
