@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../jquery-3.4.1.js"></script>
+    </head>
+    <body>
+        <button type="button" onclick="loadDoc()">Change Content</button>
+        <ul id="text"></ul>
+        <script>
+            function loadDoc() {
+                $.ajax({
+                    type: "POST",
+                    url: 'persones.txt',
+                    dataType: 'text',
+                    success: function(response) {
+                        let resp = response.split(/\n/);
+                        let text = "";
+                        $.each(resp, function (cont) {
+                            text += "<li>" + resp[cont] + "</li>"
+                        });
+                        $("#text").html(text);
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>

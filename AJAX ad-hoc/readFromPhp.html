@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <script src="../jquery-3.4.1.js"></script>
+            <style>
+            </style>
+        </head>
+        <body>
+            <div>
+                <form>
+                    <div class="inline">
+                        <label for="nom">Name: </label><br/>
+                        <input type="text" id="nom">
+                    </div>
+                    <div class="inline">
+                        <label for="edatPost">Post: </label><br/>
+                        <input type="button" value="EDAT" id="edatPost">
+                    </div>
+                    <div class="inline">
+                        <label for="edatGet">Get: </label><br/>
+                        <input type="button" value="EDAT" id="edatGet">
+                    </div>
+                </form>
+
+                <div id="age"></div>
+            </div>
+
+            <script>
+                $(document).ready(function(){
+                    $("#edatPost").click(function(){age("POST")});
+                    $("#edatGet").click(function(){age("GET")});
+                });
+
+                function age(method) {
+                    let nom  = $("#nom").val().toLowerCase();
+                    $.ajax({
+                        type: method,
+                        url: "persones.php",
+                        data:{"name": nom},
+                        success: function(edat) {
+                            $("#age").html(edat);
+                        }
+                    });
+                }
+            </script>
+        </body>
+    </html>

@@ -1,0 +1,23 @@
+<persones>
+    <persona>
+        <nom>José Carlos</nom>
+        <email>akez1999@gmail.com</email>
+        <edat>20</edat>
+        <anysExperiencia>3</anysExperiencia>
+        <sexe>M</sexe>
+    </persona>
+    <persona>
+        <nom>Carlos</nom>
+        <email></email>
+        <edat>27</edat>
+        <anysExperiencia>13</anysExperiencia>
+        <sexe>M</sexe>
+    </persona>
+    <persona>
+        <nom>Maria</nom>
+        <email>mariaqq@hotmail.com</email>
+        <edat>32</edat>
+        <anysExperiencia>12</anysExperiencia>
+        <sexe>F</sexe>
+    </persona>
+</persones>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <script src="../jquery-3.4.1.js"></script>
+            <style>
+                .input {
+                    display: inline-block;
+                }
+                div{
+                    border: solid black 1px;
+                    background-color: #bafffd;
+                    width: 25%;
+
+                    border-radius: 3px;
+
+                }
+            </style>
+        </head>
+        <body>
+            <div>
+                <form class="input">
+                    <select id="sexe">
+                        <option value="M">Home</option>
+                        <option value="F">Dona</option>
+                    </select>
+                </form>
+                <button type="load" id="load" class="input">Load</button>
+
+            </div>
+            <div><h3 id="names"></h3></div>
+
+            <script>
+                $(document).ready(function(){
+                    $("#load").click(loadDoc);
+                });
+
+                function loadDoc() {
+                    let sexSelec = $("#sexe").val();
+                    let text = "";
+                    $.ajax({
+                        type: "POST",
+                        url: "persones.xml",
+                        dataType: 'xml',
+                        success: function(response) {
+                            let data = $(response).find("persona");
+                            $.each(data, function (cont) {
+                                let sexPers = $(data[cont]).children("sexe").text();
+                                if(sexPers === sexSelec){
+                                    let name = $(data[cont]).children("nom").text();
+                                    text += name + '<br/>';
+                                }
+                            });
+                            $("#names").html(text);
+                        }
+                    });
+                }
+            </script>
+        </body>
+    </html>

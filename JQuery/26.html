@@ -3,7 +3,6 @@
         <head>
             <meta charset="UTF-8">
             <script src="jquery-3.4.1.js"></script>
-            <script type="text/javascript" src="26.js"></script>
             <title>Title</title>
             <style>
                 #result {
@@ -29,8 +28,9 @@
         <script>
             $(document).ready(function(){
                 $("#selector").change(function(){
-                    $.getJSON("26.js",function(people){
-                        var fullList = people;
+                    $.getJSON("26.json",function(people){
+                        var fullList = people["persones"];
+                        console.log(fullList);
                         var list = [];
                         var txt = "";
                         $(fullList).each(function () {
