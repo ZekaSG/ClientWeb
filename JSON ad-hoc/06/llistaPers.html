@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="dropDown.css" type="text/css">
+    <script src="jquery-3.4.1.js"></script>
+    <script src="dropDown.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+        <div id="myDropdown" class="dropdown-content"></div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                type: "GET",
+                url: "sexes.php",
+                success: function(response) {
+                    let sexes = JSON.parse(response);
+                    let text = "";
+                    $.each(sexes["sexes"], function () {
+                        text += '<a href="#">' + this["nom"] + '</a>';
+                    });
+                    $("#myDropdown").html(text);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+

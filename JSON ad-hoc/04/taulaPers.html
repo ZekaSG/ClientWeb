@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="jquery-3.4.1.js"></script>
+    <style>
+        table, tr {
+            border: solid 1px black;
+        }
+        table, tr, th, td {
+            background-color: rgb(227, 247, 252);
+            text-align: center;
+            width: 400px;
+        }
+        th {
+            background-color: rgb(212, 235, 252);
+        }
+    </style>
+</head>
+<body>
+    <table id="taula">
+        <tr>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Edat</th>
+            <th>Experiencia</th>
+            <th>Sexe</th>
+        </tr>
+    </table>
+
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+               type: "GET",
+               url: "persones.php",
+               success: function(response) {
+                   let persones = JSON.parse(response);
+                   let text = '';
+                   $.each(persones["persones"], function () {
+                       text += '<tr><td>' + this["Nom"] + '</td><td>' + this["Email"] + '</td><td>' + this["Edat"] +
+                           '</td><td>' + this["Experiencia"] + '</td><td>' + this["sexe"] + '</td>';
+                   });
+                   $("#taula").append(text);
+               }
+            });
+       });
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="jquery-3.4.1.js"></script>
+</head>
+<body>
+    <ul id="llista"></ul>
+
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+               type: "GET",
+               url: "persones.php",
+               success: function(response) {
+                   let persones = JSON.parse(response);
+                   let text = '';
+                   $.each(persones["persones"], function () {
+                       text += '<li>' + this["Nom"] + '<ul><li>' + this["Email"] + '</li><li>' + this["Edat"] +
+                           '</li><li>' + this["Experiencia"] + '</li><li>' + this["sexe"] + '</li></ul></li>';
+                   });
+                   $("#llista").html(text);
+               }
+            });
+       });
+    </script>
+</body>
+</html>

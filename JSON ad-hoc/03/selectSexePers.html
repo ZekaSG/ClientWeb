@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="jquery-3.4.1.js"></script>
+    <style>
+        form > *{
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <form>
+            <div>
+                <label for="sexe">Sexes:</label><br/>
+                <select id="sexe">
+                    <option value="none" selected disabled hidden>Select an Option</option>
+                </select>
+            </div>
+            <div>
+                <label for="persones">Persones:</label><br/>
+                <select id="persones" disabled>
+                    <option value="none" selected disabled hidden>Select an Option</option>
+                </select>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                type: "GET",
+                url: "sexes.php",
+                success: function(response) {
+                    let sexes = JSON.parse(response);
+                    let text = $("#sexe").html();
+                    $.each(sexes["sexes"], function () {
+                        text += '<option value=' + this["id"] + '>' + this["nom"] + '</option>';
+                    });
+                    $("#sexe").html(text);
+                }
+            });
+            $("#sexe").change(function(){
+                $.ajax({
+                    type: "GET",
+                    url: "persones.php",
+                    success: function(response) {
+                        let persones = JSON.parse(response);
+                        let text = '<option value="none" selected disabled hidden>Select an Option</option>';
+                        $.each(persones["persones"], function () {
+                            if(this["sexe"] === $("#sexe").val()){
+                                text += '<option value=' + this["Nom"] + '>' + this["Nom"] + '</option>';
+                            }
+                        });
+                        $("#persones").html(text);
+                    }
+                });
+                if($(this).val() !== "none" && $("#persones").prop("disabled")){
+                    $("#persones").prop("disabled", false);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

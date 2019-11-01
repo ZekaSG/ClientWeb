@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="jquery-3.4.1.js"></script>
+</head>
+<body>
+<div>
+    <form>
+        <select id="sexe">
+            <option value="none" selected disabled hidden>Select an Option</option>
+        </select>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $.ajax({
+            type: "GET",
+            url: "sexes.php",
+            success: function(response) {
+                let sexes = JSON.parse(response);
+                let text = "";
+                $.each(sexes["sexes"], function () {
+                    text += '<option value=' + this["id"] + '>' + this["nom"] + '</option>';
+                });
+                $("#sexe").html(text);
+            }
+        });
+    });
+</script>
+</body>
+</html>
