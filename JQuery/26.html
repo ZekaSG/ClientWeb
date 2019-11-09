@@ -30,7 +30,6 @@
                 $("#selector").change(function(){
                     $.getJSON("26.json",function(people){
                         var fullList = people["persones"];
-                        console.log(fullList);
                         var list = [];
                         var txt = "";
                         $(fullList).each(function () {
