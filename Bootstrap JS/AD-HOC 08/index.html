@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <title>Cards</title>
+</head>
+<body>
+
+<div id="cardsModels" class="container">
+    <h2>Cards JSON + Bootstrap.</h2>
+    <h3> JSON content: </h3>
+    <hr/>
+</div>
+
+<script>
+    $(document).ready(function(){
+        loadPeopleCards();
+    });
+
+    function loadPeopleCards() {
+        $.ajax({
+            type: "post",
+            url: "people.php",
+            success: function (response) {
+                let rowDIV;
+
+                for (i in response) {
+                    if (i % 2 == 0) {
+                        rowDIV = $("<div/>", {class: "row",});
+                        $("#cardsModels").append(rowDIV);
+                    }
+                    let nom = response[i].Nom;
+                    let foto = "img/" + response[i].foto;
+                    let email = response[i].Email;
+                    let colDIV = $("<div/>", {class: "col-sm-6"});
+                    let cardDIV = $("<div/>", {class: "card"});
+                    let cardIMG = $("<img/>", {
+                        class: "card-img-top",
+                        src: foto,
+                        alt: "card image",
+                        style: "width:100%"
+                    });
+                    cardDIV.append(cardIMG);
+                    let cardBody = $("<div/>", {class: "card-body"});
+                    let cardH4 = $("<h4/>", {class: "card-title", text: nom});
+                    let cardP = $("<p/>", {class: "card-text", text: email});
+                    let cardA = $("<a/>", {class: "btn btn-primary", href: "#", text: "Mostra persona"});
+                    cardBody.append(cardH4, cardP, cardA);
+                    cardDIV.append(cardBody);
+                    colDIV.append(cardDIV);
+                    rowDIV.append(colDIV);
+                }
+            }
+        });
+    }
+
+</script>
+</body>
+</html>

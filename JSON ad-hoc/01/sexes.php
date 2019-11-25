@@ -2,7 +2,7 @@
     $mysqli = new mysqli(
         'localhost',
         'User1',
-        'Inf3_2018',
+        '1234',
         'persones'
     );
     //Esta line transforma el output en UTF8 porqué json_encode solo funciona de esta forma
