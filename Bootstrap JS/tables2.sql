@@ -3,7 +3,7 @@ use persones2;
 
 create table Sexe(
 	id char primary key,
-    nom varchar(10)
+    Nom varchar(10)
 );
 
 create table Persona(
@@ -11,8 +11,8 @@ create table Persona(
     Email varchar(40) primary key,
     Edat int,
     Experiencia int,
-    sexe char,
-    foto varchar(50) not null,
+    Sexe char,
+    Foto varchar(50) not null,
     foreign key (sexe) references Sexe(id) on update cascade on delete cascade
 );
 
