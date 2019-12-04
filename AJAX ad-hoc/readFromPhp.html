@@ -1,7 +1,7 @@
 <!DOCTYPE html>
     <html>
         <head>
-            <script src="../jquery-3.4.1.js"></script>
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
             <style>
                 .inline{
                     display: inline-block;
@@ -56,11 +56,13 @@
 
                 function age(method) {
                     let nom  = $("#nom").val().toLowerCase();
+
                     $.ajax({
                         type: method,
                         url: "persones.php",
                         data:{"name": nom},
                         success: function(edat) {
+                            console.log(edat);
                             $("#age").html(edat);
                         }
                     });

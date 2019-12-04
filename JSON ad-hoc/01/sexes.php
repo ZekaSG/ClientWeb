@@ -2,7 +2,7 @@
     $mysqli = new mysqli(
         'localhost',
         'User1',
-        '1234',
+        'Inf3_2018',
         'persones'
     );
     //Esta line transforma el output en UTF8 porqué json_encode solo funciona de esta forma
@@ -19,7 +19,7 @@
     }
 
     $persones = [];
-    $persones["persones"] = $result->fetch_all(MYSQLI_ASSOC);
+    $persones["sexes"] = $result->fetch_all(MYSQLI_ASSOC);
 
     //JSON_UNESCAPED_UNICODE es para que el encode se haga a unicode
     echo json_encode($persones, JSON_UNESCAPED_UNICODE );

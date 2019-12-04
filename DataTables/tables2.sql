@@ -13,13 +13,13 @@ create table Persona(
     Edat int,
     Experiencia int,
     Sexe char,
-    Foto varchar(50) not null,
+    Foto varchar(50) null,
     foreign key (sexe) references Sexe(id) on update cascade on delete cascade
 );
 
 insert into Sexe values
-	("M", "male"),
-    ("F", "female");
+	("M", "Home"),
+    ("F", "Dona");
     
 insert into Persona values
 	("José Carlos", "akez1999@gmail.com", 20, 3, "M", "1.png"),

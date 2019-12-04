@@ -73,7 +73,7 @@
                     <!--Dropdown-->
                     <div class="col-2 col-sm-5 d-flex flex-row-reverse">
                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownSexe" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Sexe
+                            <i class="fas fa-filter"></i> Sexe
                         </button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownSexe">
                             <a class="dropdown-item" id="dropT" href="#">Tothom</a>
@@ -103,21 +103,126 @@
             </div>
         </div>
     </div>
+</div>
 
 
+<!-- Modal Insert -->
+<div id="modalInsert" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
 
+            <!-- header modal -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalInsertLabel">Afegir Persona</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
 
+            <!-- body modal -->
+            <div class="modal-body">
+                <form role="form" name="formEdita" method="get" id="insertForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Nom:</label>
+                            <input id="insertNom" type="text" class="form-control" placeholder="Nom" name="nom">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Email:</label>
+                            <input id="insertEmail" type="email" class="form-control" placeholder="example@gmail.com" name="email">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Edat:</label>
+                            <input id="insertEdat" type="text" class="form-control" placeholder="Edat" name="edat">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Experiencia:</label>
+                            <input id="insertExp" type="text" class="form-control" placeholder="Experiencia" name="exp">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6" id="insertSexeBox">
+                            <label>Sexe:</label><br/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- footer modal -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tancar</button>
+                <button id="insertPersona" type="submit" class="btn btn-primary">Afegir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Edit/Delete -->
+<div id="modalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <!-- header modal -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalEditLabel">Editar Persona</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <!-- body modal -->
+            <div class="modal-body">
+                <form role="form" name="formEdita" method="get" id="editForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Nom:</label>
+                            <input id="editNom" type="text" class="form-control" placeholder="Nom" name="nom">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Email:</label>
+                            <input id="editEmail" type="email" class="form-control" placeholder="example@gmail.com" readonly="readonly" name="email">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Edat:</label>
+                            <input id="editEdat" type="text" class="form-control" placeholder="Edat" name="edat">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Experiencia:</label>
+                            <input id="editExp" type="text" class="form-control" placeholder="Experiencia" name="exp">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6" id="editSexeBox">
+                            <label>Sexe:</label><br/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- footer modal -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tancar</button>
+                <button id="editPersona" type="submit" class="btn btn-primary">Confirmar canvis</button>
+                <button id="deletePersona" type="submit" class="btn btn-danger">Eliminar Persona</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
     $(document).ready(function() {
+        cargaSexes("#insertSexeBox");
+        cargaSexes("#editSexeBox");
+
         var dt = loadPersones();
-        dt.buttons().container().appendTo('#exportButtons');
 
-        loadButtons(dt);
-
-        checkEdat(dt);
-        checkExperiencia(dt);
+        $('#insertPersona').click(function(){insertPersona(dt)});
+        $('#editPersona').click(function(){updatePersona(dt)});
+        $('#deletePersona').click(function(){deletePersona(dt)});
 
         $('#dropT').click(function(){filterSexe(dt, null)});
         $('#dropM').click(function(){filterSexe(dt, "M")});
@@ -130,10 +235,10 @@
 
 
     function loadPersones() {
-        return $('#table').DataTable({
+        let dt = $('#table').DataTable({
             dom: 'Brtp',
             ajax: {
-                url: 'persones.php',
+                url: 'getPersones.php',
                 dataSrc: '',
                 type: "get",
             },
@@ -178,12 +283,19 @@
                     init: removeSecondaryButtons
                 }
             ]
-
             //Error de compatibilitat amb els botons. No els deixa seleccionar
             // language: {
             //     url: "//cdn.datatables.net/plug-ins/1.10.19/i18n/Catalan.json"
             // }
         });
+        dt.buttons().container().appendTo('#exportButtons');
+
+        loadButtons(dt);
+
+        checkEdat(dt);
+        checkExperiencia(dt);
+
+        return dt;
     }
 
     //Order Buttons
@@ -191,15 +303,24 @@
         new $.fn.dataTable.Buttons( table, {
             buttons: [
                 {
-                    text: 'Delete Row',
+                    text: '<i class="fas fa-user-edit"></i> Editar',
                     action: function (e, dt, node, config) {
-                        dt.rows({selected: true}).remove().draw();
+                        loadModal(dt.row({selected: true}));
+                        $("#modalEdit").modal();
                     },
                     className: 'btn-primary',
                     init: removeSecondaryButtons
                 },
                 {
-                    text: 'Borrar tots els botons',
+                    text: '<i class="fas fa-user-plus"></i> Afegir',
+                    action: function (e, dt, node, config) {
+                        $("#modalInsert").modal();
+                    },
+                    className: 'btn-primary',
+                    init: removeSecondaryButtons
+                },
+                {
+                    text: '<i class="fas fa-user-minus"></i> Eliminar',
                     action: function (e, dt, node, config) {
                         dt.buttons().remove();
                     },
@@ -262,6 +383,91 @@
 
     function removeSecondaryButtons(api, node, config){
         $(node).removeClass('btn-secondary');
+    }
+
+    //Activitat 04
+
+    function cargaSexes(element){
+        $.ajax({
+            type: "GET",
+            url: "getSexes.php",
+            success: function(response) {
+                let text = "";
+                $.each(response, function () {
+                    text += '<div class="form-check form-check-inline"> ' +
+                                '<input class="form-check-input" type="radio" name="sexe" id="insert' + this["id"] + '" value="' + this["id"] + '"> ' +
+                                '<label class="form-check-label" for="insert' + this["id"] + '">' + this["Nom"].charAt(0).toUpperCase() +  this["Nom"].substr(1).toLowerCase() + '</label> ' +
+                            '</div> ';
+                });
+                $(element).append(text);
+            }
+        });
+    }
+
+    //Insert
+    function insertPersona(table){
+        $('#modalInsert').modal('toggle');
+        $.ajax({
+            type: "post",
+            url: "insertPersona.php",
+            data:{"nom": $("#insertNom").val(), "email": $("#insertEmail").val(), "edat": $("#insertEdat").val(), "exp": $("#insertExp").val(), "sexe": $('#insertSexeBox').find('input:radio[name=sexe]:checked').val()},
+            success: function (response) {
+                if(response == true) {
+                    table.ajax.reload();
+                    alert("S'ha Afegit correctament a " + $('#insertNom').val());
+                }
+            }
+        }).fail(function() {
+            alert("Ha hagut un error!");
+        });
+        //No sé perqué dona l'error a ajax en lloc de retornar-lo com resposta
+    }
+
+    //Update/Delete
+    function loadModal(row){
+        let persona = row.data();
+
+        $("#editNom").val(persona.Nom);
+        $("#editEmail").val(persona.Email);
+        $("#editEdat").val(persona.Edat);
+        $("#editExp").val(persona.Experiencia);
+        $('#editSexeBox').find('input:radio[name=sexe]').filter("[value=" + persona.Sexe + "]").prop('checked', true);
+    }
+
+    function updatePersona(table){
+        $('#modalEdit').modal('toggle');
+        $.ajax({
+            type: "post",
+            url: "updatePersona.php",
+            data:{"nom": $("#editNom").val(), "email": $("#editEmail").val(), "edat": $("#editEdat").val(), "exp": $("#editExp").val(), "sexe": $('#editSexeBox').find('input:radio[name=sexe]:checked').val()},
+            success: function (response) {
+                if(response == true) {
+                    table.ajax.reload();
+                    alert("S'ha actualitzat correctament a " + $('#editNom').val());
+                }
+            }
+        }).fail(function() {
+            alert("Ha hagut un error!");
+        });
+        //No sé perqué dona l'error a ajax en lloc de retornar-lo com resposta
+    }
+
+    function deletePersona(table){
+        $('#modalEdit').modal('toggle');
+        $.ajax({
+            type: "post",
+            url: "deletePersona.php",
+            data:{"email": $("#editEmail").val()},
+            success: function (response) {
+                if(response == true) {
+                    table.ajax.reload();
+                    alert("S'ha eliminat correctament a " + $('#editNom').val());
+                }
+            }
+        }).fail(function() {
+            alert("Ha hagut un error!");
+        });
+        //No sé perqué dona l'error a ajax en lloc de retornar-lo com resposta
     }
 
 </script>

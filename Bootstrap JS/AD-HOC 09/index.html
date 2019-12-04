@@ -84,9 +84,8 @@
     function loadPersones() {
         $.ajax({
             type: "post",
-            url: "persones.php",
+            url: "getPersones.php",
             success: function (items) {
-                console.log(items);
                 for (i in items) {
                     let email = items[i].Email;
                     let nom = items[i].Nom;
@@ -100,9 +99,10 @@
     function loadPersona(id) {
         $.ajax({
             type: "post",
-            url: "persones.php",
+            url: "getPersona.php",
             data: {email: id},
             success: function (response) {
+                console.log(response);
                 let item = response[0];
                 $("#idc").val(item.Email);
                 $("#nomc").val(item.Nom);

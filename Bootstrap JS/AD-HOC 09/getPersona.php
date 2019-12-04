@@ -3,12 +3,13 @@ header("Content-Type: application/json; charset=UTF-8");
 $conn = new mysqli(
     'localhost',
     'User1',
-    '1234',
+    'Inf3_2018',
     'persones2'
 );
 mysqli_set_charset($conn,"utf8");
 
-$result = $conn->query('SELECT * from persona order by nom');
+$email = $_REQUEST['email'];
+$result = $conn->query("SELECT * from persona where Email='{$email}'");
 
 $persones = $result->fetch_all(MYSQLI_ASSOC);
 

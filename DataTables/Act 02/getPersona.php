@@ -3,7 +3,7 @@ header("Content-Type: application/json; charset=UTF-8");
 $conn = new mysqli(
     'localhost',
     'User1',
-    '1234',
+    'Inf3_2018',
     'persones2'
 );
 mysqli_set_charset($conn,"utf8");
