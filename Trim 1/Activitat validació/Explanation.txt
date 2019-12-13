@@ -1,0 +1,13 @@
+Deixar esài adalt per l'alert.
+
+Obligatorietat de l'username: length =>4
+	(----.submit();)
+
+Despres de submit:
+	-  si hi ha error, tornar a login amb missatge d'error.
+
+Registre:
+	User
+	Pass (>= 8, 1 numero, 1 caracter especial)
+	Pass (coincidir)
+	Nom
