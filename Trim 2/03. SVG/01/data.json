@@ -1,0 +1,53 @@
+
+[
+    {
+        "product":"Potatoes",
+        "color": "brown",
+        "kg": "234"
+    },
+    {
+        "product":"Cheese",
+        "color": "yellow",
+        "kg": "534"
+    },
+    {
+        "product":"Meat",
+        "color": "red",
+        "kg": "457"
+    },
+    {
+        "product":"Veggys",
+        "color": "green",
+        "kg": "631"
+    },
+    {
+        "product":"Water",
+        "color": "blue",
+        "kg": "518"
+    },
+    {
+        "product":"Bread",
+        "color": "pink",
+        "kg": "268"
+    },
+    {
+        "product":"Fish",
+        "color": "aqua",
+        "kg": "411"
+    },
+    {
+        "product":"Coffe",
+        "color": "brown",
+        "kg": "378"
+    },
+    {
+        "product":"Choco",
+        "color": "chocolate",
+        "kg": "592"
+    },
+    {
+        "product":"Oil",
+        "color": "greenyellow",
+        "kg": "215"
+    }
+]

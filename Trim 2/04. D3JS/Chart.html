@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            background-color: #ccc;
+            width: 100%;
+        }
+        #chart{
+            background-color: #ccc;
+            width: 1000px;
+            height: 500px;
+            margin: 50px auto;
+            border: solid 1px #000;
+        }
+        svg{
+            background-color: #fff;
+        }
+        .axis line, .axis path{
+            stroke: #bbb;
+        }
+        .axis text{
+            fill: #bbb;
+        }
+    </style>
+
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="chart"></div>
+
+<script src="d3.min.js"></script>
+<script>
+    var margin = 50, width = 1000, height = 500;
+    var xScale, yScale;
+
+    var svg = d3.select('#chart')
+        .append('svg')
+        .attr('width', width + 'px')
+        .attr('height', height + 'px')
+
+
+    // function make_x_gridlines() {
+    //     return d3.axisBottom(xScale)
+    //         .ticks(6)
+    // }
+
+
+    d3.csv("offers.csv").then(function(data) {
+
+        yMinMax = d3.extent(data,function(d){
+            return parseFloat(d.visits);
+        });
+
+        yScale = d3.scaleLinear()
+            .domain([0, yMinMax[1]])
+            .range([0,height-margin*2]);
+
+        xScale = d3.scaleLinear()
+            .domain([0, data.length])
+            .range([0,width-margin*2]);
+
+        cScale = d3.scaleLinear()
+            .domain([yMinMax[0],yMinMax[1]])
+            .range(['#d6ddff', '#5655ff']);
+
+        // svg.append("g")
+        //     .attr("class", "grid")
+        //     .attr("transform", "translate(0," + height + ")")
+        //     .call(make_x_gridlines()
+        //         .tickSize(-height)
+        //         .tickFormat("")
+        //     );
+
+
+        svg.selectAll('.dot')
+            .data(data)
+            .enter()
+            .append('rect')
+            .attr('class', 'dot')
+            .attr('width', function(d){
+                return xScale(0.8);
+            })
+            .attr(
+                "x", function(d, i){
+                    return margin + i*xScale(1);
+            })
+            .attr(
+                "y", function(d){
+                    return height-margin-yScale(d.visits);
+            })
+            .attr('height',function(d){
+                return yScale(d.visits);
+            })
+            .attr('fill',function(d){
+                return cScale(d.visits);
+            });
+
+        //Text
+        svg.selectAll('.chart')
+            .data(data)
+            .enter()
+            .append("text")
+            .attr("x", function(d, i) {
+            return margin + i*(xScale(1)) + (xScale(1)*0.14);
+            })
+            .attr("y", function(d) {
+                return height - margin + 20;
+            })
+            .attr("font-size", "14px")
+            .attr("font-family", "sans-serif")
+            .text(function(d) {
+                return d.title;
+            });
+
+        //Visits Text
+        svg.selectAll('.chart')
+            .data(data)
+            .enter()
+            .append("text")
+            .attr("x", function(d, i) {
+                return margin + i*(xScale(1)) + (xScale(1)*0.30);
+            })
+            .attr("y", function(d) {
+                return height - yScale(d.visits) - margin - 3;
+            })
+            .attr("font-size", "14px")
+            .attr("font-family", "sans-serif")
+            .text(function(d) {
+                return d.visits;
+            });
+
+        //Left Axis
+        yAxisScale = d3.scaleLinear()
+            .domain([yMinMax[1], 0])
+            .range([0,height-margin*2]);
+
+        yAxis = d3.axisLeft(yAxisScale).ticks(6);
+
+        yAxisG = svg.append('g')
+            .attr('id','yAxis')
+            .attr('class', 'axis');
+
+        yAxisG.call(yAxis)
+            .attr('transform','translate(' + margin/1.5 + ', ' + margin + ')');
+
+
+    });
+</script>
+
+</body>
+</html>

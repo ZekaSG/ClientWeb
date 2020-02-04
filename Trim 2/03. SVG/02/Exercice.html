@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="anime.min.js"></script>
+    <style>
+        .first{
+            width: 50px;
+            height: 50px;
+            margin-top: 70px;
+            background-color: #89ff7b;
+        }
+
+        .second{
+            width: 50px;
+            height: 50px;
+            background-color: #ff6698;
+        }
+
+        .xat{
+            width:300px;
+            height: 1px;
+            background-color: #ff6698;
+            position: absolute;
+            right: 30px;
+            bottom:50px;
+
+        }
+    </style>
+</head>
+<body>
+<section>
+    <article>
+        <div class="first"></div>
+        <br><br><br><br>
+        <div class="second"></div>
+
+        <br><br><br><br><br><br>
+
+        <div class="xat"></div>
+        <input type="button" value="Show" class="show">
+        <input type="button" value="Hide" class="hide">
+    </article>
+</section>
+<script>
+
+    var animationShow =  anime({
+        targets: '.xat',
+        height:[
+            {value:["0px", "400px"], duration:1000}
+        ],
+        easing: 'easeInOutQuad',
+        autoplay: false
+    });
+
+    var animationHide =  anime({
+        targets: '.xat',
+        height:[
+            {value:["400px", "0px"], duration:1000}
+        ],
+        translateY:[
+            {value:"0px", duration:1000, delay: 1000}
+        ],
+        easing: 'easeInOutQuad',
+        autoplay: false
+    });
+
+    document.querySelector('.show').onclick = animationShow.play;
+    document.querySelector('.hide').onclick = animationHide.play;
+
+
+
+    anime({
+        targets: '.first',
+        translateX: [
+            { value: 250, duration: 1000, delay: 500 },
+            { value: 0, duration: 1000, delay: 500 }
+        ],
+        translateY: [
+            { value: -40, duration: 500 },
+            { value: 40, duration: 500, delay: 1000 },
+            { value: 0, duration: 500, delay: 1000 }
+        ],
+
+        rotate: [
+            {value: 60, duration: 500},
+            {value: 220, duration: 1000},
+            {value: 120, duration: 500},
+            {value: 220, duration: 1000},
+            {value: 60, duration: 500}
+        ],
+
+        scale: [
+            {value: [.3, 1], delay:500},
+            {value: [1, .3], delay:1000}
+        ],
+        loop: true
+    });
+
+
+
+    anime({
+        targets: '.second',
+        width:[
+            {value:"400px", duration: 1000},
+            {value:"50px", duration: 1000},
+            {value:"400px", duration: 1000},
+            {value:"50px", duration: 1000}
+        ],
+        translateX: [
+            {value: 350, duration: 1000, delay: 1000 },
+            {value: 0, duration: 1000}
+        ],
+        easing: 'easeInOutQuad',
+        loop: true
+    });
+
+
+</script>
+</body>
+</html>

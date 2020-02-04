@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JSON SVG Creation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<div>
+    <h2>SVG Activity 01</h2>
+    <svg width="900" height="500" id="meuDibuix">
+        <rect width="900" height="500" style="fill:white; stroke:black"/>
+        <g id="diagram"></g>
+        <style>
+            .fillOp {
+                animation-name: fillOpacity;
+                animation-duration: 2.5s;
+            }
+            @keyframes fillOpacity {
+                0%   { opacity: 0.1; }
+                100% { opacity: 1; }
+            }
+        </style>
+    </svg>
+</div>
+<script>
+
+    var svg = document.getElementById('diagram');
+
+    var ns = "http://www.w3.org/2000/svg";
+
+    function createRect(x, y, h, w, c){
+
+        var rect = document.createElementNS(ns,"rect");
+
+        rect.setAttributeNS(null, 'x', x);
+        rect.setAttributeNS(null, 'y', y);
+        rect.setAttributeNS(null, 'rx', '10');
+        rect.setAttributeNS(null, 'ry', '10');
+        rect.setAttributeNS(null, 'width', w -5);
+        rect.setAttributeNS(null, 'height', h);
+        rect.setAttributeNS(null, 'fill', c);
+        rect.setAttribute("class", "fillOp");
+
+        var anima = document.createElementNS(ns,"animate");
+
+        anima.setAttributeNS(null, 'attributeName', 'width');
+        anima.setAttributeNS(null, 'from', '0');
+        anima.setAttributeNS(null, 'to', w);
+        anima.setAttributeNS(null, 'dur', '2.5s');
+
+        rect.appendChild(anima);
+
+        return rect;
+    }
+
+    function createText(x, y, s, f, txt){
+
+        var text = document.createElementNS(ns,"text");
+
+        text.setAttributeNS(null, 'x', x);
+        text.setAttributeNS(null, 'y', y);
+        text.setAttributeNS(null,"font-size",s);
+        text.setAttributeNS(null,"font-family",f);
+        // text.setAttributeNS(null,"transform", "rotate("+ang+" "+x+" "+y+")");
+        text.setAttribute("class", "fillOp");
+
+        var textNode = document.createTextNode(txt);
+        text.appendChild(textNode);
+
+        return text;
+    }
+
+    function createBarDiagram(h, jsonData){
+
+        for(var i in jsonData){
+
+            // Rectangles
+            var rect = createRect(200, i*h, h, jsonData[i].kg, jsonData[i].color);
+            svg.appendChild(rect);
+
+            // Text Product
+            var textProduct = createText(50, h/2 + i*h + 5, 24, "Arial, Helvetica, sans-serif", jsonData[i].product, 0);
+            svg.appendChild(textProduct);
+
+            // Text Kg
+            var textKg = createText(parseInt(jsonData[i].kg)/2 + 170, h/2 + i*h  + 5, 18, "monospace", jsonData[i].kg+ "Kg");
+            svg.appendChild(textKg);
+
+        }
+    }
+
+    $(document).ready(function(){
+        $.ajax({
+            type: 'GET',
+            url: "data.json",
+            success: function(data){
+                createBarDiagram(50, data);
+            }
+        });
+
+
+    });
+
+</script>
+</body>
+</html>
